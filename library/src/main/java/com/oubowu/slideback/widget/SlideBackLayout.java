@@ -7,6 +7,7 @@ import android.support.annotation.FloatRange;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewGroupCompat;
 import android.support.v4.widget.ViewDragHelper;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -309,10 +310,8 @@ public class SlideBackLayout extends FrameLayout {
             }
         }
 
-
         @Override
         public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
-
             if (!mRotateScreen && mCacheDrawView.getVisibility() == INVISIBLE) {
                 mCacheDrawView.setBackgroundDrawable(mPreDecorViewDrawable);
                 mCacheDrawView.drawCacheView(mPreContentView);

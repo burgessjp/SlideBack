@@ -38,6 +38,7 @@ public class SlideBackHelper {
      * @param listener    滑动的监听
      * @return 处理侧滑的布局，提高方法动态设置滑动相关参数
      */
+    @SuppressWarnings("deprecation")
     public static SlideBackLayout attach(@NonNull final Activity curActivity, @NonNull final ActivityHelper helper, @Nullable final SlideConfig config, @Nullable final OnSlideListener listener) {
 
         final ViewGroup decorView = getDecorView(curActivity);
@@ -46,7 +47,7 @@ public class SlideBackHelper {
 
         View content = contentView.findViewById(android.R.id.content);
         if (content.getBackground() == null) {
-            content.setBackground(decorView.getBackground());
+            content.setBackgroundDrawable(decorView.getBackground());
         }
 
         final Activity[] preActivity = {helper.getPreActivity()};
@@ -54,7 +55,7 @@ public class SlideBackHelper {
         Drawable preDecorViewDrawable = getDecorViewDrawable(preActivity[0]);
         content = preContentView[0].findViewById(android.R.id.content);
         if (content.getBackground() == null) {
-            content.setBackground(preDecorViewDrawable);
+            content.setBackgroundDrawable(preDecorViewDrawable);
         }
 
         final SlideBackLayout slideBackLayout;
