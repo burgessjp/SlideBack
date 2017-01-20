@@ -227,6 +227,8 @@ public class SlideBackLayout extends FrameLayout {
         mCacheDrawView.drawCacheView(mPreContentView);
     }
 
+
+    @SuppressWarnings("deprecation")
     class SlideLeftCallback extends ViewDragHelper.Callback {
 
         @Override
@@ -276,7 +278,7 @@ public class SlideBackLayout extends FrameLayout {
 
                         // 这里再绘制一次是因为在屏幕旋转的模式下，remove了preContentView后布局会重新调整
                         if (mRotateScreen && mCacheDrawView.getVisibility() == INVISIBLE) {
-                            mCacheDrawView.setBackground(mPreDecorViewDrawable);
+                            mCacheDrawView.setBackgroundDrawable(mPreDecorViewDrawable);
                             mCacheDrawView.drawCacheView(mPreContentView);
                             mCacheDrawView.setVisibility(VISIBLE);
                             // Log.e("TAG", mTestName + ": 这里再绘制一次是因为在屏幕旋转的模式下，remove了preContentView后布局会重新调整");
@@ -290,7 +292,7 @@ public class SlideBackLayout extends FrameLayout {
                             mPreContentView.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    mCacheDrawView.setBackground(mPreDecorViewDrawable);
+                                    mCacheDrawView.setBackgroundDrawable(mPreDecorViewDrawable);
                                     mCacheDrawView.drawCacheView(mPreContentView);
                                 }
                             }, 10);
@@ -307,11 +309,12 @@ public class SlideBackLayout extends FrameLayout {
             }
         }
 
+
         @Override
         public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
 
             if (!mRotateScreen && mCacheDrawView.getVisibility() == INVISIBLE) {
-                mCacheDrawView.setBackground(mPreDecorViewDrawable);
+                mCacheDrawView.setBackgroundDrawable(mPreDecorViewDrawable);
                 mCacheDrawView.drawCacheView(mPreContentView);
                 mCacheDrawView.setVisibility(VISIBLE);
             } else if (mRotateScreen) {
